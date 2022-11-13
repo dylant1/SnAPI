@@ -1,5 +1,6 @@
 import Card from "../models/Card";
 import { Request, Response } from "express";
+
 export const getCards = async (req: Request, res: Response) => {
   try {
     const cards = await Card.find();

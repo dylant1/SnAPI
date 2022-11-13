@@ -53,7 +53,7 @@ fastify.register(view_1.default, {
     },
 });
 fastify.get("/", (req, reply) => {
-    reply.view("/templates/index.ejs", { title: "Expr-Ass" });
+    reply.view("/templates/index.ejs", { title: "SnAPI" });
 });
 routes_1.default.forEach((route, index) => {
     fastify.route(route);

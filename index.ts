@@ -26,8 +26,9 @@ fastify.register(fastifyView, {
     ejs: require("ejs"),
   },
 });
+
 fastify.get("/", (req, reply) => {
-  reply.view("/templates/index.ejs", { title: "Expr-Ass" });
+  reply.view("/templates/index.ejs", { title: "SnAPI" });
 });
 
 routes.forEach((route: any, index: Number) => {
