@@ -7,6 +7,7 @@ const cardSchema = new mongoose.Schema({
   //   ability: String,
   abilityType: String,
   description: String,
+  pool: Number,
 });
 
 export default mongoose.model("Card", cardSchema);
