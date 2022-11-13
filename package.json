@@ -3,7 +3,9 @@
   "types": "index.d.ts",
   "dependencies": {
     "@fastify/mongodb": "^6.1.0",
+    "@fastify/view": "^7.1.2",
     "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
     "fastify": "^4.9.2",
     "fastify-plugin": "^4.3.0",
     "mongoose": "^6.7.2",

@@ -11,5 +11,6 @@ const cardSchema = new mongoose_1.default.Schema({
     //   ability: String,
     abilityType: String,
     description: String,
+    pool: Number,
 });
 exports.default = mongoose_1.default.model("Card", cardSchema);

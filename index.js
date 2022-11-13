@@ -30,6 +30,7 @@ const fastify_1 = __importDefault(require("fastify"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv = __importStar(require("dotenv"));
 const routes_1 = __importDefault(require("./routes"));
+const view_1 = __importDefault(require("@fastify/view"));
 dotenv.config();
 const fastify = (0, fastify_1.default)({
     logger: true,
@@ -46,10 +47,14 @@ mongoose_1.default
     .catch((err) => {
     console.log(err);
 });
-// fastify.get("/ping", async (request, reply) => {
-//   return "pong\n";
-// });
-//figure out the type of route
+fastify.register(view_1.default, {
+    engine: {
+        ejs: require("ejs"),
+    },
+});
+fastify.get("/", (req, reply) => {
+    reply.view("/templates/index.ejs", { title: "Expr-Ass" });
+});
 routes_1.default.forEach((route, index) => {
     fastify.route(route);
 });

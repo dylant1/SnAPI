@@ -2,6 +2,8 @@ import Fastify from "fastify";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import routes from "./routes";
+import fastifyView from "@fastify/view";
+
 dotenv.config();
 const fastify = Fastify({
   logger: true,
@@ -19,10 +21,15 @@ mongoose
     console.log(err);
   });
 
-// fastify.get("/ping", async (request, reply) => {
-//   return "pong\n";
-// });
-//figure out the type of route
+fastify.register(fastifyView, {
+  engine: {
+    ejs: require("ejs"),
+  },
+});
+fastify.get("/", (req, reply) => {
+  reply.view("/templates/index.ejs", { title: "Expr-Ass" });
+});
+
 routes.forEach((route: any, index: Number) => {
   fastify.route(route);
 });
