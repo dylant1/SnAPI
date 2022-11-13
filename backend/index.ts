@@ -27,7 +27,7 @@ routes.forEach((route: any, index: Number) => {
   fastify.route(route);
 });
 
-fastify.listen({ port: 3000 }, function (err, address) {
+fastify.listen({ port: 8080 }, function (err, address) {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
