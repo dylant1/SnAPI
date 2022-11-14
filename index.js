@@ -35,7 +35,7 @@ dotenv.config();
 const fastify = (0, fastify_1.default)({
     logger: true,
 });
-const URI = process.env.CONNECTION_URI;
+const URI = process.env.CONNECTION_URI || "error";
 console.log(URI);
 mongoose_1.default
     .connect(URI, {
