@@ -6,14 +6,13 @@ import fastifyView from "@fastify/view";
 
 dotenv.config();
 const fastify = Fastify({
-  logger: true,
+  logger: false,
 });
 const URI =
-  process.env.CONNECTION_URI ||
   "mongodb+srv://Admin01:jjuTMpuQMBtsy3nB@snapi.vy3duf6.mongodb.net/?retryWrites=true&w=majority";
 console.log(URI);
 mongoose
-  .connect(URI!, {
+  .connect(URI, {
     dbName: "snap-data",
   })
   .then(() => {
@@ -21,6 +20,7 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
+    console.log("cant connect");
   });
 
 fastify.register(fastifyView, {

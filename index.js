@@ -35,7 +35,7 @@ dotenv.config();
 const fastify = (0, fastify_1.default)({
     logger: true,
 });
-const URI = process.env.CONNECTION_URI || "error";
+const URI = "mongodb+srv://Admin01:jjuTMpuQMBtsy3nB@snapi.vy3duf6.mongodb.net/?retryWrites=true&w=majority";
 console.log(URI);
 mongoose_1.default
     .connect(URI, {
@@ -46,6 +46,7 @@ mongoose_1.default
 })
     .catch((err) => {
     console.log(err);
+    console.log("cant connect");
 });
 fastify.register(view_1.default, {
     engine: {
