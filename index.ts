@@ -8,7 +8,7 @@ dotenv.config();
 const fastify = Fastify({
   logger: true,
 });
-const URI = process.env.CONNECTION_URI;
+const URI = process.env.CONNECTION_URI || "error";
 console.log(URI);
 mongoose
   .connect(URI!, {
