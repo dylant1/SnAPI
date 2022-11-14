@@ -31,9 +31,10 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv = __importStar(require("dotenv"));
 const routes_1 = __importDefault(require("./routes"));
 const view_1 = __importDefault(require("@fastify/view"));
+// import fastifyEnv from "@fastify/env";
 dotenv.config();
 const fastify = (0, fastify_1.default)({
-    logger: true,
+    logger: false,
 });
 const URI = "mongodb+srv://Admin01:jjuTMpuQMBtsy3nB@snapi.vy3duf6.mongodb.net/?retryWrites=true&w=majority";
 console.log(URI);
@@ -53,13 +54,30 @@ fastify.register(view_1.default, {
         ejs: require("ejs"),
     },
 });
+// fastify.register(fastifyEnv);
 fastify.get("/", (req, reply) => {
     reply.view("/templates/index.ejs", { title: "SnAPI" });
 });
+let port;
+if (process.env.PORT) {
+    port = parseInt(process.env.PORT, 10);
+}
+else {
+    port = 3000;
+}
 routes_1.default.forEach((route, index) => {
     fastify.route(route);
 });
-fastify.listen({ port: 8080 }, function (err, address) {
+// // const port: any = parseInt(<string>process.env.PORT, 10) || 3000;
+// fastify.listen({ port: 3000 }, function (err, address) {
+//   if (err) {
+//     fastify.log.error(err);
+//     console.log("Fail");
+//     process.exit(1);
+//   }
+//   // Server is now listening on ${address}
+// });
+fastify.listen({ port: port }, function (err, address) {
     if (err) {
         fastify.log.error(err);
         process.exit(1);

@@ -2,6 +2,7 @@
   "main": "index.ts",
   "types": "index.d.ts",
   "dependencies": {
+    "@fastify/env": "^4.1.0",
     "@fastify/mongodb": "^6.1.0",
     "@fastify/view": "^7.1.2",
     "dotenv": "^16.0.3",

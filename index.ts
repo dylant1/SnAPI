@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import routes from "./routes";
 import fastifyView from "@fastify/view";
-
+// import fastifyEnv from "@fastify/env";
 dotenv.config();
 const fastify = Fastify({
   logger: false,
@@ -28,16 +28,33 @@ fastify.register(fastifyView, {
     ejs: require("ejs"),
   },
 });
-
+// fastify.register(fastifyEnv);
 fastify.get("/", (req, reply) => {
   reply.view("/templates/index.ejs", { title: "SnAPI" });
 });
 
+let port: number;
+if (process.env.PORT) {
+  port = parseInt(process.env.PORT, 10);
+} else {
+  port = 3000;
+}
+
 routes.forEach((route: any, index: Number) => {
   fastify.route(route);
 });
+// // const port: any = parseInt(<string>process.env.PORT, 10) || 3000;
+// fastify.listen({ port: 3000 }, function (err, address) {
+//   if (err) {
+//     fastify.log.error(err);
+//     console.log("Fail");
 
-fastify.listen({ port: 8080 }, function (err, address) {
+//     process.exit(1);
+//   }
+//   // Server is now listening on ${address}
+// });
+
+fastify.listen({ port: port }, function (err, address) {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
