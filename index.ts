@@ -3,11 +3,13 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import routes from "./routes";
 import fastifyView from "@fastify/view";
+import cors from "@fastify/cors";
 // import fastifyEnv from "@fastify/env";
 dotenv.config();
 const fastify = Fastify({
   logger: false,
 });
+fastify.register(cors, {});
 const URI =
   "mongodb+srv://Admin01:jjuTMpuQMBtsy3nB@snapi.vy3duf6.mongodb.net/?retryWrites=true&w=majority";
 console.log(URI);
