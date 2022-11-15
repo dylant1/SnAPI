@@ -37,7 +37,10 @@ dotenv.config();
 const fastify = (0, fastify_1.default)({
     logger: false,
 });
-fastify.register(cors_1.default, {});
+fastify.register(cors_1.default, {
+    origin: "*",
+    methods: ["POST", "GET"],
+});
 const URI = "mongodb+srv://Admin01:jjuTMpuQMBtsy3nB@snapi.vy3duf6.mongodb.net/?retryWrites=true&w=majority";
 console.log(URI);
 mongoose_1.default

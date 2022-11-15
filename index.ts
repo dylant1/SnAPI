@@ -9,7 +9,10 @@ dotenv.config();
 const fastify = Fastify({
   logger: false,
 });
-fastify.register(cors, {});
+fastify.register(cors, {
+  origin: "*",
+  methods: ["POST", "GET"],
+});
 const URI =
   "mongodb+srv://Admin01:jjuTMpuQMBtsy3nB@snapi.vy3duf6.mongodb.net/?retryWrites=true&w=majority";
 console.log(URI);
