@@ -1,0 +1,10 @@
+openapi: 3.1.0
+info:
+  title: A free public API for Marvel Snap
+  version: 0.0.1
+paths:
+  /cards:
+    get:
+      summary: Get every card
+      description: Retrives every single card found in Marvel Snap
+      parameters:
