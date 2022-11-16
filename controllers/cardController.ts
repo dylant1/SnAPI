@@ -3,7 +3,12 @@ import { Request, Response } from "express";
 
 export const getCards = async (req: Request, res: Response) => {
   try {
-    const cards = await Card.find();
+    const cards = await Card.find(
+      {},
+      {
+        _id: 0,
+      }
+    );
     return cards;
   } catch (err) {
     throw err;

@@ -7,7 +7,9 @@ exports.addCard = exports.getSingleCard = exports.getCards = void 0;
 const Card_1 = __importDefault(require("../models/Card"));
 const getCards = async (req, res) => {
     try {
-        const cards = await Card_1.default.find();
+        const cards = await Card_1.default.find({
+            _id: 0,
+        });
         return cards;
     }
     catch (err) {

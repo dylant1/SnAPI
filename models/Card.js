@@ -8,9 +8,12 @@ const cardSchema = new mongoose_1.default.Schema({
     name: String,
     cost: Number,
     power: Number,
-    //   ability: String,
-    abilityType: String,
     description: String,
+    abilityType: String,
+    abilityID: Number,
     pool: Number,
+    hasAbility: Boolean,
+}, {
+    versionKey: false,
 });
 exports.default = mongoose_1.default.model("Card", cardSchema);
