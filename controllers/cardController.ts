@@ -7,6 +7,7 @@ export const getCards = async (req: Request, res: Response) => {
       {},
       {
         _id: 0,
+        __v: 0,
       }
     );
     return cards;
