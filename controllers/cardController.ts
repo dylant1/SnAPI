@@ -2,18 +2,26 @@ import Card from "../models/Card";
 import { Request, Response } from "express";
 
 export const getCards = async (req: Request, res: Response) => {
-  let filters = {
-    power: Number(req.query.power),
-    energy: Number(req.query.energy),
-    pool: Number(req.query.pool),
-  };
-  // let power = req.query.power;
-  // let energy = req.query.energy;
-  // let pool = req.query.pool;
+  interface IFilter {
+    power: Number;
+    cost: Number;
+    pool: Number;
+  }
+  let filters = {} as IFilter;
+  if (req.query.power) {
+    filters["power"] = Number(req.query.power);
+  }
+  if (req.query.cost) {
+    filters["cost"] = Number(req.query.cost);
+  }
+  if (req.query.pool) {
+    filters["pool"] = Number(req.query.pool);
+  }
+  console.log(filters);
   try {
     const cards = await Card.find(
-      // { $or: [{ power: "Rambo" }, { energy: "Pugg" }, { pool: {} }] },
       { ...filters },
+      // { ...filters },
       {
         _id: 0,
         __v: 0,
