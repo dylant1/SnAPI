@@ -8,7 +8,7 @@ const routes = [
   },
   {
     method: "GET",
-    url: "/api/cards/:id",
+    url: "/api/card/:name",
     handler: cardController.getSingleCard,
   },
   {
@@ -17,5 +17,9 @@ const routes = [
     handler: cardController.addCard,
     // schema: documentation.addCarSchema,
   },
+  // {
+  //   method: "GET",
+  //   url: "/api/locations",
+  // },
 ];
 export default routes;

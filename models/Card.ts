@@ -6,10 +6,8 @@ const cardSchema = new mongoose.Schema(
     cost: Number,
     power: Number,
     description: String,
-    abilityType: String,
-    abilityID: Number,
     pool: Number,
-    hasAbility: Boolean,
+    img: String,
   },
   {
     versionKey: false,
