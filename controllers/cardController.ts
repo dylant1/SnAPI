@@ -3,12 +3,16 @@ import { Request, Response } from "express";
 
 export const getCards = async (req: Request, res: Response) => {
   let filters = {
-    power: req.query.power,
-    energy: req.query.energy,
-    pool: req.query.pool,
+    power: Number(req.query.power),
+    energy: Number(req.query.energy),
+    pool: Number(req.query.pool),
   };
+  // let power = req.query.power;
+  // let energy = req.query.energy;
+  // let pool = req.query.pool;
   try {
     const cards = await Card.find(
+      // { $or: [{ power: "Rambo" }, { energy: "Pugg" }, { pool: {} }] },
       { ...filters },
       {
         _id: 0,
